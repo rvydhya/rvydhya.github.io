@@ -6,3 +6,9 @@ docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=your password' -e 'MSSQL_PID=Expre
 
 
 docker run -it --rm -p 8000:80 --name aspnetcore_sample microsoft/dotnet-samples:aspnetapp
+(above container name)
+only ssh to container using container name
+ docker exec -i -t aspnetcore_sample /bin/bash
+
+only ssh to container using container id
+docker exec -i -t a123e480386d /bin/bash
