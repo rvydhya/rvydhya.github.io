@@ -3,3 +3,6 @@
 https://stackoverflow.com/questions/36844213/how-to-set-proxy-in-docker-toolbox
 https://hub.docker.com/r/microsoft/mssql-server-linux/
 docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=your password' -e 'MSSQL_PID=Express' -p 1445:1433 --name mydb2 microsoft/mssql-server-linux:latest
+
+
+docker run -it --rm -p 8000:80 --name aspnetcore_sample microsoft/dotnet-samples:aspnetapp
