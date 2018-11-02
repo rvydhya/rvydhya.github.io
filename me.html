@@ -12,3 +12,11 @@ only ssh to container using container name
 
 only ssh to container using container id
 docker exec -i -t a123e480386d /bin/bash
+
+My docker file
+----------------------
+FROM microsoft/dotnet
+WORKDIR /app
+COPY . .
+
+ENTRYPOINT ["dotnet", "WebApplication2.dll"]
