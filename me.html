@@ -20,3 +20,10 @@ WORKDIR /app
 COPY . .
 
 ENTRYPOINT ["dotnet", "WebApplication2.dll"]
+---------------------------------------------------------------
+FROM microsoft/dotnet
+WORKDIR /app
+COPY . .
+ENTRYPOINT ["dotnet", "RaviAppNew.dll"]
+docker build -t raviimage .
+docker run -it -p 5020:80 --name ravicontainer raviimage
