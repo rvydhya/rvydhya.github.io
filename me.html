@@ -30,3 +30,28 @@ docker run -it -p 5020:80 --name ravicontainer raviimage
 
 ----------------------
 docker rm $(docker ps --all -q -f status=exited)
+
+------------------------------
+
+docker 
+
+server 
+FROM microsoft/dotnet
+WORKDIR /app
+COPY . .
+ENTRYPOINT ["dotnet", "Server.dll"]
+docker run -it -p 5020:80 --name consolecontainer consoleimage
+
+-> creates container with 8ad9 container id and consolecontainer as the name of the container
+->
+->follow this command to get into container
+
+docker exec -i -t 8ad9 /bin/bash
+
+-> create mkdir appclient
+
+-->open other command window and navigate to client bin\debug and copy all files to appclient folder and place it in consolecontainer created just above while server container is running
+
+docker cp . consolecontainer:/appclient
+
+
