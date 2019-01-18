@@ -27,3 +27,6 @@ COPY . .
 ENTRYPOINT ["dotnet", "RaviAppNew.dll"]
 docker build -t raviimage .
 docker run -it -p 5020:80 --name ravicontainer raviimage
+
+----------------------
+docker rm $(docker ps --all -q -f status=exited)
