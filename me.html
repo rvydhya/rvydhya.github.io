@@ -28,6 +28,13 @@ ENTRYPOINT ["dotnet", "RaviAppNew.dll"]
 docker build -t raviimage .
 docker run -it -p 5020:80 --name ravicontainer raviimage
 
+
+in the above if proxy is there
+
+docker build --build-arg HTTP_PROXY=http://proxysite:port --build-arg HTTPS_PROXY=http://proxysite:port -t raviimage .
+
+
+
 ----------------------
 docker rm $(docker ps --all -q -f status=exited)
 
