@@ -94,8 +94,11 @@
     <div class="col-sm-6" style="overflow-x: auto!important;padding-left:5%!important;margin-top:2%!important;height:90%!important;">
      <h4 class="mb-1">Angular Routing Guards</h4>
      <p>
-    
-    
+     
+
+
+
+
 <p>Authguard interfaces of Angular help protect\safe guard important routes in your angular application based on authentication.  
 
 If you want to guard "product" route, it is simply a 4 step approach,</p>
@@ -103,26 +106,29 @@ If you want to guard "product" route, it is simply a 4 step approach,</p>
 <p> 1) Implement your JWT bearer token authentication code, here injectable ApplicationAuthService </p>
 
 <p>
+<ul>
 
-import { Injectable } from '@angular/core';
-import { JwtHelperService } from '@auth0/angular-jwt';
-@Injectable()
-export class ApplicationAuthService {
-  constructor() {}
+<li>import { Injectable } from '@angular/core';</li>
+<li>import { JwtHelperService } from '@auth0/angular-jwt';</li>
+<li>@Injectable()</li>
+<li>export class ApplicationAuthService {</li>
+<li>  constructor() {}</li>
   
-  private isTokenExpired(token: string) {
-  const expiry = (JSON.parse(atob(token.split('.')[1]))).exp;
-  return (Math.floor((new Date).getTime() / 1000)) >= expiry;
-}
+<li>  private isTokenExpired(token: string) {</li>
+<li>  const expiry = (JSON.parse(atob(token.split('.')[1]))).exp;</li>
+<li>  return (Math.floor((new Date).getTime() / 1000)) >= expiry;</li>
+<li>}</li>
 
 
-  public isAuthenticated(): boolean {
-    const token = localStorage.getItem('token');
+<li>  public isAuthenticated(): boolean {</li>
+<li>    const token = localStorage.getItem('token');</li>
     
-return this.tokenExpired(token)?false:true;
+<li>return this.tokenExpired(token)?false:true;</li>
     
-  }
-}</p>
+<li>  }</li>
+<li>}</li>
+<ul>
+</p>
 
 <p> 2) Implement CanActivate interface in your Guard service here AuthGuardService. Inject ApplicationAuthService.</p>
 
@@ -130,42 +136,42 @@ return this.tokenExpired(token)?false:true;
 
 <p> 3) Override canActivate() method, it returns true if the user is authenticated or navigates to Login URL </p>
 <p>
-import { Injectable } from '@angular/core';
-import { Router, CanActivate } from '@angular/router';
-import { AuthService } from './auth.service';
-@Injectable()
-export class AuthGuardService implements CanActivate {
-  constructor(public authService: ApplicationAuthService , public router: Router) {}
-  canActivate(): boolean {
-    if (!this.authService.isAuthenticated()) {
-      this.router.navigate(['signIn']);
-      return false;
-    }
-    return true;
-  }
-}
+<ul>
+<li>import { Injectable } from '@angular/core';</li>
+<li>import { Router, CanActivate } from '@angular/router';</li>
+<li>import { AuthService } from './auth.service';</li>
+<li>@Injectable()</li>
+<li>export class AuthGuardService implements CanActivate {</li>
+<li>  constructor(public authService: ApplicationAuthService , public router: Router) {}</li>
+<li>  canActivate(): boolean {</li>
+    <li>if (!this.authService.isAuthenticated()) {</li>
+<li>      this.router.navigate(['signIn']);</li>
+    <li>  return false;</li>
+<li>    }</li>
+    <li>return true;</li>
+<li>  }</li>
+<li>}</li>
+</ul>
 </p>
 
 
 <p> 4) Add canActivate: [AuthGuard] to the desired routes(routes which needs to be protected) </p>
 <p>
-import { Routes, CanActivate } from '@angular/router';
-import { ProductComponent } from './product/product.component';
-import {   AuthGuardService as AuthGuard } from './auth/auth-guard.service';
-export const ROUTES: Routes = [
-  { path: '', component: HomeComponent },
-  { 
-    path: 'product',
-    component: ProductComponent,
-    canActivate: [AuthGuard] 
-  },
-  { path: '**', redirectTo: '' }
-];
+<ul>
+<li>import { Routes, CanActivate } from '@angular/router';</li>
+<li>import { ProductComponent } from './product/product.component';</li>
+<li>import {   AuthGuardService as AuthGuard } from './auth/auth-guard.service';</li>
+<li>export const ROUTES: Routes = [</li>
+<li>  { path: '', component: HomeComponent },</li>
+<li>  { </li>
+    <li>path: 'product',</li> 
+<li>    component: ProductComponent,</li>
+    <li>canActivate: [AuthGuard] </li>
+<li>  },</li>
+<li>  { path: '**', redirectTo: '' }</li>
+<li>];</li>
+</ul>
 </p>
-
-
-
-
 
 
 
