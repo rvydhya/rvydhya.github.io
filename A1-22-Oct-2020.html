@@ -106,7 +106,7 @@ If you want to guard "product" route, it is simply a 4 step approach,</p>
 <p> 1) Implement your JWT bearer token authentication code, here injectable ApplicationAuthService </p>
 
 <p>
-<ul>
+<ul style="list-style-type:none;background-color:#eae0e0;">
 
 <li>import { Injectable } from '@angular/core';</li>
 <li>import { JwtHelperService } from '@auth0/angular-jwt';</li>
@@ -127,16 +127,16 @@ If you want to guard "product" route, it is simply a 4 step approach,</p>
     
 <li>  }</li>
 <li>}</li>
-<ul>
+</ul>
 </p>
 
 <p> 2) Implement CanActivate interface in your Guard service here AuthGuardService. Inject ApplicationAuthService.</p>
 
-<p>export class AuthGuardService implements CanActivate {}</p>
+<p><ul style="list-style-type:none;background-color:#eae0e0;"><li> export class AuthGuardService implements CanActivate {}</li></ul></p>
 
 <p> 3) Override canActivate() method, it returns true if the user is authenticated or navigates to Login URL </p>
 <p>
-<ul>
+<ul style="list-style-type:none;background-color:#eae0e0;">
 <li>import { Injectable } from '@angular/core';</li>
 <li>import { Router, CanActivate } from '@angular/router';</li>
 <li>import { AuthService } from './auth.service';</li>
@@ -157,7 +157,7 @@ If you want to guard "product" route, it is simply a 4 step approach,</p>
 
 <p> 4) Add canActivate: [AuthGuard] to the desired routes(routes which needs to be protected) </p>
 <p>
-<ul>
+<ul style="list-style-type:none;background-color:#eae0e0;">
 <li>import { Routes, CanActivate } from '@angular/router';</li>
 <li>import { ProductComponent } from './product/product.component';</li>
 <li>import {   AuthGuardService as AuthGuard } from './auth/auth-guard.service';</li>
