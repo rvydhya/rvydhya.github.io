@@ -91,45 +91,53 @@
   <div class="row" style="height: 100%!important;overflow:auto;">
     
     <div class="col-sm-6" style="overflow-x: auto!important;padding-left:5%!important;margin-top:2%!important;height:90%!important;">
-     <h4 class="mb-1">AWS vs Azure vs GCP</h4>
+     <h4 class="mb-1">Angular Interceptors</h4>
      <p>
-     Microsoft Azure services compare to Amazon Web Services (AWS) & to GCP
+     Angular Interceptors
  
         <p>
-           <table class="table" style='font-size: small!important;'> 
-<thead>
-<tr>
-<th>AWS</th>
-<th>GCP</th>
-<th>Azure</th>
- 
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://aws.amazon.com/marketplace" data-linktype="external">AWS Marketplace</a></td>
-<td><a href="https://cloud.google.com/marketplace" data-linktype="external">GCP Marketplace</a></td>
-<td><a href="https://azure.microsoft.com/marketplace/" data-linktype="external">Azure Marketplace</a></td>
- 
-</tr>
-    
-<tr>
-<td><a href="https://aws.amazon.com/sagemaker/" data-linktype="external">SageMaker</a></td>
-<td><a href="https://cloud.google.com/ai-hub" data-linktype="external">AI Hub</a></td>
-<td><a href="https://azure.microsoft.com/services/machine-learning-services/" data-linktype="external">Machine Learning</a></td>
- 
-</tr>
-    
-    <tr>
-<td><a href="https://aws.amazon.com/eks/" data-linktype="external">Elastic Kubernetes Service (EKS)</a></td>
-<td><a href="https://cloud.google.com/kubernetes-engine#documentation" data-linktype="external">Kubernetes Engine (GKE)</a></td>
-<td><a href="https://azure.microsoft.com/services/kubernetes-service/" data-linktype="external">Kubernetes Service (AKS)</a></td>
+         Angular Interceptors modify the http requests before they are sent to web server.  
 
-</tr>
-</tbody>
-</table>
         </p>
         
+        <p>
+            
+Here is the simple LogInterceptor which implements HttpInterceptor and overrides the intercept() method
+ </p>
+            <ul>
+                <li>      @Injectable() </li><li>
+export class LogInterceptor implements HttpInterceptor {</li><li>
+  intercept(</li><li>
+    request: HttpRequest<any>, next: HttpHandler</li><li>
+  ) : Observable<HttpEvent<any>> {</li><li>
+    console.log(request.url);</li><li>
+    return next.handle(request);</li><li>
+  }</li><li>
+}</li>
+        </ul>
+                <p>
+                    Add interceptor as provider in the module
+        </p>
+             
+        
+        <ul>
+      <li>      import { HTTP_INTERCEPTORS } from '@angular/common/http';</li><li>
+import { LogInterceptor } from '...';</li><li>
+@NgModule({</li><li>
+  imports: [</li><li>
+    HttpClientModule </li><li>
+  ],</li><li>
+  providers: [</li><li>
+    {</li><li>
+      provide: HTTP_INTERCEPTORS,</li><li>
+      useClass: LogInterceptor</li><li>
+      
+    } </li><li>
+  ],</li><li>
+ 
+})</li><li>
+export class AppModule { }</li>
+        </ul>
      </p>
     </div>
      <div class="col-sm-6" style="overflow-x: auto!important;background-color:#d8c2c2;">
