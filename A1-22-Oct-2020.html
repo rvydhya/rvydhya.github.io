@@ -55,7 +55,7 @@
         <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
       </li> -->
       <li class="nav-item">
-        <a class="nav-link" href="#">About Me</a>
+       <a class="nav-link" href="Articles">Articles</a>
       </li>
         <li class="nav-item">
         <a class="nav-link" href="RAVICHANDRA%20VYDHYA.docx" download>Resume</a>
@@ -77,7 +77,7 @@
             
             
             <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Articles</a>
+         
         </div>
       </li> 
    
@@ -103,7 +103,7 @@
 
 If you want to guard "product" route, it is simply a 4 step approach,</p>
 
-<p> 1) Implement your JWT bearer token authentication code, here injectable ApplicationAuthService </p>
+<p> 1) Firstly implement your JWT bearer token authentication code.Here is the injectable ApplicationAuthService which gets the auth token from browser's local storage. </p>
 
 <p>
 <ul style="list-style-type:none;background-color:#eae0e0;">
@@ -130,7 +130,7 @@ If you want to guard "product" route, it is simply a 4 step approach,</p>
 </ul>
 </p>
 
-<p> 2) Implement CanActivate interface in your Guard service here AuthGuardService. Inject ApplicationAuthService.</p>
+<p> 2) Implement CanActivate interface in your Guard service, AuthGuardService. Inject ApplicationAuthService into AuthGuardService.</p>
 
 <p><ul style="list-style-type:none;background-color:#eae0e0;"><li> export class AuthGuardService implements CanActivate {}</li></ul></p>
 
