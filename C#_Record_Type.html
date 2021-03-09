@@ -96,18 +96,20 @@
     </p>
     
     <p>
-      public record Person
-{
-    public string LastName { get; }
-    public string FirstName { get; }
+	     <ul style="list-style-type:none;background-color:#eae0e0;">
+                <li>
+      public record Person</li><li>
+{</li><li>
+    public string LastName { get; }</li><li>
+    public string FirstName { get; }</li><li>
 
-    public Person(string first, string last) => (FirstName, LastName) = (first, last);
-}
+    public Person(string first, string last) => (FirstName, LastName) = (first, last);</li><li>
+		     }</li><li></ul>
     </p>
     
     <p>
       
-      The record definition creates a Person type that contains two readonly properties: 
+      The above record definition creates a Person type that contains two readonly properties: 
       FirstName and LastName. The Person type is a reference type. If you looked at the IL, it’s a class.
       It’s immutable in that none of the properties can be modified once it's been created. 
     </p>
